@@ -8,10 +8,7 @@ var CastSchema = new Schema({
 
 var FilmsSchema = new Schema({
   title: String,
-  director: {
-    type: Schema.Types.ObjectId,
-    ref: "Director"
-  },
+  director: String,
   genre: String,
   releaseDate: String,
   topBilledCast: [CastSchema]

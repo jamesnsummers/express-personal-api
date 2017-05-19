@@ -9,15 +9,15 @@ var new_film = [
   director: "David Fincher",
   genre: "Thriller",
   releaseDate: "September 22, 1995",
-  topBilledCast: ["Brad Pitt", "Morgan Freeman", "Kevin Spacey"]
+  topBilledCast: "Brad Pitt", "Morgan Freeman", "Kevin Spacey"
   }
 ];
 
-db.Film.create(new_film, function(err, film){
+db.Films.create(new_film, function(err, film){
   if (err){
     return console.log("Error:", err);
   }
 
-  console.log("Created new film", film._id)
+  console.log("Created new film", films._id)
   process.exit(); // we're all done! Exit the program.
 })
