@@ -10,6 +10,6 @@ db.Film.create(new_film, function(err, film){
     return console.log("Error:", err);
   }
 
-  console.log("Created new film", campsite._id)
+  console.log("Created new film", film._id)
   process.exit(); // we're all done! Exit the program.
 })
