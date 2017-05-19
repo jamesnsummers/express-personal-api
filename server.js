@@ -75,10 +75,10 @@ app.get('/api', function apiIndex(req, res) {
       {method: "POST", path: "/api/films", description: "Add new film I've seen"},
       {method: "PUT", path: "/api/films/:id", description: "Edit something about a film I've seen"},
       {method: "DELETE", path: "/api/films/:id", description: "Delete a film from the list"},
-      {method: "GET", path: "/api/places", description: "Places I've traveled"},
-      {method: "POST", path: "/api/places/", description: "Add new place I've traveled"},
-      {method: "PUT", path: "/api/places/:id", description: "Edit something about a place I've traveled"},
-      {method: "DELETE", path: "/api/places/:id", description: "Delete a place from the list"}
+      {method: "GET", path: "/api/projects", description: "Projects I've made"},
+      {method: "POST", path: "/api/projects", description: "Add a new project"},
+      {method: "PUT", path: "/api/projects/:id", description: "Edit something about a project I made"},
+      {method: "DELETE", path: "/api/projects/:id", description: "Delete a project from the list"}
     ]
   })
 });
