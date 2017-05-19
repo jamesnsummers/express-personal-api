@@ -43,19 +43,35 @@ app.get('/', function homepage(req, res) {
  */
 
 app.get('/api', function apiIndex(req, res) {
-  // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
-  // It would be seriously overkill to save any of this to your database.
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/jamesnsummers/express-personal-api/README.md",
     baseUrl: "https://ancient-gorge-64117.herokuapp.com/",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Here's a little story about James..."},
-      {method: "POST", path: "/api/films", description: "Films I've seen and loved"} 
+      {method: "GET", path: "/api/films", description: "Films I've seen and loved"},
+      {method: "POST", path: "/api/films", description: "Add new film I've seen"},
+      {method: "PUT", path: "/api/films/:id", description: "Edit something about a film I've seen"},
+      {method: "DELETE", path: "/api/films/:id", description: "Delete a film from the list"},
+      {method: "GET", path: "/api/places", description: "Places I've traveled"},
+      {method: "POST", path: "/api/places/", description: "Add new place I've traveled"},
+      {method: "PUT", path: "/api/places/:id", description: "Edit something about a place I've traveled"},
+      {method: "DELETE", path: "/api/places/:id", description: "Delete a place from the list"}
     ]
   })
+});
+
+app.get('/api/profile', function getProfile (req, res){
+  var profile = res.json({
+    name: "James Summers",
+    githuUsername: "jamesnsummers",
+    githubLink: "https://github.com/jamesnsummers",
+    githubProfileImage: "https://avatars0.githubusercontent.com/u/23504992?v=3&u=23e80422beb2b0e79dc025bb26b80e52fabc2ebe&s=400",
+    personalSiteLink: "http://jamesnsummers.com/",
+    currentCity: "Austin, TX",
+    pets: ["Sedona", "Duke", "Oreo"]
+  });
 });
 
 /**********
