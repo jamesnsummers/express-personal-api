@@ -62,7 +62,7 @@ app.get('/api', function apiIndex(req, res) {
   })
 });
 
-app.get('/api/profile', function getProfile (req, res){
+app.get('/api/profile', function getProfile(req, res){
   var profile = res.json({
     name: "James Summers",
     githuUsername: "jamesnsummers",
@@ -73,6 +73,13 @@ app.get('/api/profile', function getProfile (req, res){
     pets: ["Sedona", "Duke", "Oreo"]
   });
 });
+
+app.get('api/films', function getFilms(req, res){
+  db.Films.find().populate('films')
+    .exec(function(err, films) {
+      if (err) { return console.log("index error: " + err); }
+      res.json(films);
+})
 
 /**********
  * SERVER *
