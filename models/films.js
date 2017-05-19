@@ -8,10 +8,13 @@ var CastSchema = new Schema({
 
 var FilmsSchema = new Schema({
   title: String,
-  director: String,
+  director: {
+    type: Schema.Types.ObjectId,
+    ref: "Director"
+  },
   genre: String,
   releaseDate: String,
-  topBilledCast: [CastSchema]
+  topBilledCast: [String]
 });
 
 var Films = mongoose.model('Films', FilmsSchema);

@@ -3,21 +3,37 @@
 
 var db = require('./models');
 
-var new_film = [
+var new_film =
   {
   title: "Seven",
-  director: "David Fincher",
   genre: "Thriller",
   releaseDate: "September 22, 1995",
-  topBilledCast: "Brad Pitt", "Morgan Freeman", "Kevin Spacey"
-  }
-];
-
-db.Films.create(new_film, function(err, film){
-  if (err){
-    return console.log("Error:", err);
+  topBilledCast: ["Brad Pitt", "Morgan Freeman", "Kevin Spacey"]
   }
 
-  console.log("Created new film", films._id)
-  process.exit(); // we're all done! Exit the program.
-})
+
+var director = {
+  name: "David Fincher",
+  alive: true
+}
+
+db.Films.remove(function(err,succ){
+  db.Director.remove(function(err,succ){
+    db.Director.create(director, function(err, newDirector){
+      if (err){
+        return console.log("Error:", err);
+      }
+      new_film.director = newDirector;
+      db.Films.create(new_film, function(err, film){
+        if (err){
+          return console.log("Error:", err);
+        }
+        console.log(film);
+        //console.log("Created new film", films._id)
+        process.exit(); // we're all done! Exit the program.
+      })
+
+
+    });
+  });
+});
