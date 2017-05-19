@@ -8,6 +8,6 @@ var PlacesSchema = new Schema({
   image: String
 });
 
-var Director = mongoose.model('Director', DirectorSchema);
+var Places = mongoose.model('Places', PlacesSchema);
 
-module.exports = Director;
+module.exports = Places;

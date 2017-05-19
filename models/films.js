@@ -19,4 +19,4 @@ var FilmsSchema = new Schema({
 
 var Films = mongoose.model('Films', FilmsSchema);
 
-module.exports = Campsite;
+module.exports = Films;
