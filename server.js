@@ -79,6 +79,7 @@ app.get('api/films', function getFilms(req, res){
     .exec(function(err, films) {
       if (err) { return console.log("index error: " + err); }
       res.json(films);
+    });
 });
 
 /**********

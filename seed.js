@@ -3,7 +3,15 @@
 
 var db = require('./models');
 
-var new_campsite = {description: "Sharp rocks. Middle of nowhere."}
+var new_film = [
+  {
+  title: "Seven",
+  director: "David Fincher",
+  genre: "Thriller",
+  releaseDate: "September 22, 1995",
+  topBilledCast: ["Brad Pitt", "Morgan Freeman", "Kevin Spacey"]
+  }
+];
 
 db.Film.create(new_film, function(err, film){
   if (err){
