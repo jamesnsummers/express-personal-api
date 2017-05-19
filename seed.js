@@ -3,7 +3,7 @@
 
 var db = require('./models');
 
-var new_film = [
+var film_list = [
   {
     title: "Seven",
     director: "David Fincher",
@@ -35,7 +35,7 @@ var new_film = [
 
 ];
 
-var director = [
+var director_list = [
   {
     name: "David Fincher",
     alive: true,
@@ -50,27 +50,39 @@ var director = [
     name: "Jordan Peele",
     alive: true,
     image: "/public/images/Jordan-Peele.jpg"
-  },
+  }
 
 ];
 
-db.Films.remove(function(err,succ){
-  db.Director.remove(function(err,succ){
-    db.Director.create(director, function(err, newDirector){
-      if (err){
-        return console.log("Error:", err);
-      }
-      new_film.director = newDirector;
-      db.Films.create(new_film, function(err, film){
-        if (err){
-          return console.log("Error:", err);
-        }
-        console.log(film);
-        //console.log("Created new film", films._id)
-        process.exit(); // we're all done! Exit the program.
-      })
+db.Director.remove(function(err,succ){
+  db.Director.create(director_list, function(err, newDirector){
+    if (err){
+      return console.log("Error:", err);
+    }
 
-
+    db.Films.remove({}, function(err, films){
+      console.log('removed all films');
+      film_list.forEach(function (filmData) {
+        var film = new db.Films({
+          title: filmData.title,
+          genre: filmData.genre,
+          releaseDate: filmData.releaseDate
+        });
+        db.Director.findOne({name: filmData.director}, function (err, foundDirector) {
+          console.log('found director ' + foundDirector.name + ' for book ' + film.title);
+          if (err) {
+            console.log(err);
+            return;
+          }
+          film.director = foundDirector;
+          film.save(function(err, savedFilm){
+            if (err) {
+              return console.log(err);
+            }
+            console.log('saved ' + savedFilm.title + ' by ' + foundDirector.name);
+          });
+        });
+      });
     });
   });
 });

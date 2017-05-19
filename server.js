@@ -25,6 +25,27 @@ var db = require('./models');
  * ROUTES *
  **********/
 
+ app.get('/api/profile', function getProfile(req, res){
+   var profile = res.json({
+     name: "James Summers",
+     githuUsername: "jamesnsummers",
+     githubLink: "https://github.com/jamesnsummers",
+     githubProfileImage: "https://avatars0.githubusercontent.com/u/23504992?v=3&u=23e80422beb2b0e79dc025bb26b80e52fabc2ebe&s=400",
+     personalSiteLink: "http://jamesnsummers.com/",
+     currentCity: "Austin, TX",
+     pets: ["Sedona", "Duke", "Oreo"]
+   });
+ });
+
+ app.get('/api/films', function getFilms(req, res){
+   db.Films.find()
+     .populate('director')
+     .exec(function(err, films) {
+       if (err) { return console.log("index error: " + err); }
+       res.json(films);
+   });
+ });
+
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static('public'));
@@ -60,27 +81,6 @@ app.get('/api', function apiIndex(req, res) {
       {method: "DELETE", path: "/api/places/:id", description: "Delete a place from the list"}
     ]
   })
-});
-
-app.get('/api/profile', function getProfile(req, res){
-  var profile = res.json({
-    name: "James Summers",
-    githuUsername: "jamesnsummers",
-    githubLink: "https://github.com/jamesnsummers",
-    githubProfileImage: "https://avatars0.githubusercontent.com/u/23504992?v=3&u=23e80422beb2b0e79dc025bb26b80e52fabc2ebe&s=400",
-    personalSiteLink: "http://jamesnsummers.com/",
-    currentCity: "Austin, TX",
-    pets: ["Sedona", "Duke", "Oreo"]
-  });
-});
-
-app.get('/api/films', function getFilms(req, res){
-  db.Films.find()
-    .populate('director')
-    .exec(function(err, films) {
-      if (err) { return console.log("index error: " + err); }
-      res.json(films);
-  });
 });
 
 /**********
