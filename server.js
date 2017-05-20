@@ -48,10 +48,9 @@ var db = require('./models');
 
  app.get('/api/projects', function getProjects(req, res){
    db.Projects.find()
-     .populate('')
-     .exec(function(err, films) {
+     .exec(function(err, projects) {
        if (err) { return console.log("index error: " + err); }
-       res.json(films);
+       res.json(projects);
    });
  });
 

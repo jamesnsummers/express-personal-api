@@ -57,18 +57,13 @@ var director_list = [
 var project_list = [
   {
     name: "Tic Tac Toe",
-    dateCompleted: "May 7, 2017"
+    dateCompleted: "May 7, 2017",
     url: "http://jim-jac-joe.bitballoon.com/"
   },
   {
     name: "Books App",
     dateCompleted: "May 12, 2017",
-    url: "/public/images/Destin-Daniel-Cretton.jpg"
-  },
-  {
-    name: "Jordan Peele",
-    alive: true,
-    image: "/public/images/Jordan-Peele.jpg"
+    url: ""
   }
 
 ];
@@ -103,5 +98,14 @@ db.Director.remove(function(err,succ){
         });
       });
     });
+  });
+});
+
+db.Projects.remove(function(err, succ){
+  db.Projects.create(project_list, function(err, succ){
+    if (err){
+      return console.log("error:", err);
+    }
+    db.Projects(succ);
   });
 });
