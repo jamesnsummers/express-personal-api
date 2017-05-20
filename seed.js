@@ -56,19 +56,19 @@ var director_list = [
 
 var project_list = [
   {
-    name: "Tic Tac Toe",
+    title: "Tic Tac Toe",
     dateCompleted: "May 7, 2017",
     url: "http://jim-jac-joe.bitballoon.com/"
   },
   {
-    name: "Books App",
+    title: "Books App",
     dateCompleted: "May 12, 2017",
     url: ""
   }
 
 ];
 
-db.Director.remove(function(err,succ){
+db.Director.remove(function(err, succ){
   db.Director.create(director_list, function(err, newDirector){
     if (err){
       return console.log("Error:", err);
@@ -106,6 +106,6 @@ db.Projects.remove(function(err, succ){
     if (err){
       return console.log("error:", err);
     }
-    db.Projects(succ);
+    db.Projects.find(succ);
   });
 });

@@ -7,6 +7,6 @@ var ProjectSchema = new Schema({
   url: String
 });
 
-var Projects = mongoose.model('Places', ProjectSchema);
+var Projects = mongoose.model('Projects', ProjectSchema);
 
 module.exports = Projects;
