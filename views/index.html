@@ -56,11 +56,12 @@
             <hr>
             <p>
               <b>{{title}}</b>
-              Directed by: {{director.name}}
               <br>
-              <b>Starring:</b>
-              {{#each CastSchema}}
-                {{name}} <button class="deleteCastMember btn btn-danger" data-filmid={{../_id}} data-castid={{_id}}><b>x</b></button>
+              <b>Directed by {{director.name}}</b>
+              <br>
+              <b>Starring: </b>
+              {{#each topBilledCast.name}}
+                <!-- {{name}} <button class="deleteCastMember btn btn-danger" data-filmid={{../_id}} data-castid={{_id}}><b>x</b></button> -->
               {{/each}}
               <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button>
             </p>

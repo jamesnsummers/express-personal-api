@@ -46,6 +46,15 @@ var db = require('./models');
    });
  });
 
+ app.get('/api/projects', function getProjects(req, res){
+   db.Projects.find()
+     .populate('')
+     .exec(function(err, films) {
+       if (err) { return console.log("index error: " + err); }
+       res.json(films);
+   });
+ });
+
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static('public'));
@@ -60,7 +69,7 @@ app.get('/', function homepage(req, res) {
 
 
 /*
- * JSON API Endpoints
+ * JSON API Endpoints list
  */
 
 app.get('/api', function apiIndex(req, res) {

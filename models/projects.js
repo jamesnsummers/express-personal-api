@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 var ProjectSchema = new Schema({
   title: String,
   dateCompleted: String,
-  image: String
+  url: String
 });
 
 var Projects = mongoose.model('Places', ProjectSchema);
