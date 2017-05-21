@@ -37,9 +37,9 @@ $(document).ready(function(){
   function filmSuccess(json) {
     allFilms = json;
     render(allFilms);
-    var directorImage = json[0].director.image;
-    $('p').append(
-      `<a href=${directorImage}> <img src = ${directorImage}/></>`
+    var poster = json[2].image;
+    $('#films-template').prepend(
+      `<a href=${poster}> <img src = ${poster}/></>`
     )
   }
   function filmError(e) {

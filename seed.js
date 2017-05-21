@@ -89,7 +89,7 @@ db.Director.remove(function(err, succ){
           console.log('found director ' + foundDirector.name + ' for film ' + film.title);
           if (err) {
             console.log(err);
-            return;
+            // return;
           }
           film.director = foundDirector;
           film.save(function(err, savedFilm){
@@ -97,12 +97,15 @@ db.Director.remove(function(err, succ){
               return console.log(err);
             }
             console.log('saved ' + savedFilm.title + ' directed by ' + foundDirector.name);
-            return;
           });
         });
+
       });
+      return;
     });
+    return console.log(film_list);
   });
+
 });
 
 db.Projects.remove(function(err, succ){
