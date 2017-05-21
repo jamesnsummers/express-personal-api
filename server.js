@@ -46,19 +46,31 @@ app.get('/api/films', function getFilms(req, res){
  });
 });
 
+app.post('/api/films', function (req, res) {
+  // create new book with form data (`req.body`)
+  var newFilm = new db.Films({
+    title: req.body.title,
+    director: req.body.director
+  });
+});
+
+app.delete('/api/films/:id', function (req, res) {
+  console.log('films deleted: ', req.params);
+  var filmId = req.params.id;
+  db.Films.findOneAndRemove({ _id: bookId })
+    .populate('director')
+    .exec(function (err, deletedFilm) {
+      res.json(deletedFilm);
+  });
+});
+
+
 app.get('/api/projects', function getProjects(req, res){
  db.Projects.find()
    .exec(function(err, projects) {
      if (err) { return console.log("index error: " + err); }
      res.json(projects);
  });
-});
-
-app.post('/api/films', function (req, res) {
-  // create new book with form data (`req.body`)
-  var newFilm = new db.Film({
-    title: req.body.title
-  });
 });
 
 // Serve static files from the `/public` directory:

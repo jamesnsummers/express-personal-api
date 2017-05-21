@@ -14,7 +14,7 @@ $(document).ready(function(){
 
   $.ajax({
     method: 'GET',
-    url: '/api/profile',
+    url: '/api/profile/',
     data: $("form").serialize(),
     success: profileSuccess,
     error: profileError
@@ -22,7 +22,7 @@ $(document).ready(function(){
 
   $.ajax({
     method: 'GET',
-    url: '/api/films',
+    url: '/api/films/',
     data: $("form").serialize(),
     success: filmSuccess,
     error: filmError
@@ -30,7 +30,7 @@ $(document).ready(function(){
 
   $.ajax({
     method: 'GET',
-    url: '/api/projects',
+    url: '/api/projects/',
     data: $("form").serialize(),
     success: projectSuccess,
     error: projectError
@@ -41,10 +41,20 @@ $(document).ready(function(){
     console.log('new film serialized', $(this).serializeArray());
     $.ajax({
       method: 'POST',
-      url: '/api/films',
+      url: '/api/films/',
       data: $(this).serializeArray(),
       success: newFilmSuccess,
       error: newFilmError
+    });
+  });
+
+  $filmList.on('click', '.deleteBtn', function() {
+    console.log('clicked delete button to', '/api/films/'+$(this).attr('data-id'));
+    $.ajax({
+      method: 'DELETE',
+      url: '/api/films/'+$(this).attr('data-id'),
+      success: deleteFilmSuccess,
+      error: deleteFilmError
     });
   });
 
@@ -74,13 +84,32 @@ $(document).ready(function(){
   }
 
   function newFilmSuccess(json) {
-  $('#newFilmForm input').val('');
-  allFilms.push(json);
+    $('#newFilmForm input').val('');
+    allFilms.push(json);
+    render();
+  }
+
+  function newFilmError() {
+    console.log('newfilm error!');
+  }
+
+  function deleteFilmSuccess(json) {
+  var film = json;
+  console.log(json);
+  var filmId = films._id;
+  console.log('delete book', bookId);
+  // find the book with the correct ID and remove it from our allBooks array
+  for(var index = 0; index < allFilms.length; index++) {
+    if(allFilms[index]._id === bookId) {
+      allFilms.splice(index, 1);
+      break;  // we found our book - no reason to keep searching (this is why we didn't use forEach)
+    }
+  }
   render();
 }
 
-function newFilmError() {
-  console.log('newfilm error!');
+function deleteFilmError() {
+  console.log('deletefilm error!');
 }
 
   function projectSuccess(json){
