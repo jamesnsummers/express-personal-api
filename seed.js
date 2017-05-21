@@ -80,7 +80,8 @@ db.Director.remove(function(err, succ){
         var film = new db.Films({
           title: filmData.title,
           genre: filmData.genre,
-          releaseDate: filmData.releaseDate
+          releaseDate: filmData.releaseDate,
+          topBilledCast: filmData.topBilledCast
         });
         db.Director.findOne({name: filmData.director}, function (err, foundDirector) {
           console.log('found director ' + foundDirector.name + ' for book ' + film.title);
@@ -93,7 +94,7 @@ db.Director.remove(function(err, succ){
             if (err) {
               return console.log(err);
             }
-            console.log('saved ' + savedFilm.title + ' by ' + foundDirector.name);
+            console.log('saved ' + savedFilm.title + ' directed by ' + foundDirector.name);
           });
         });
       });

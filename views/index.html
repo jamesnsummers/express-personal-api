@@ -17,17 +17,9 @@
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
   </head>
-  <!-- <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Welcome to James' App</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
-        </div>
-      </div>
-    </div>
-  </body> -->
+
   <body>
+
   <div class="container">
     <h1 class="text-center">James N Summers</h1>
     <h4><a href="/api">Read My API Documentation</a></h4>
@@ -42,11 +34,6 @@
             <label for="title">Director</label>
             <input type="text" class="form-control" name="director" placeholder="Director's Name">
           </div>
-          <!-- <div class="form-group">
-            <label for="title">Cast Members</label>
-            <input type="text" class="form-control" name="topBilledCast[name]" placeholder="Top Billed Cast">
-            <input type="text" class="form-control" name="topBilledCast[name]" placeholder="Top Billed Cast">
-          </div> -->
           <button type="submit" class="btn btn-default">Add New Film</button>
         </form>
         <div id='filmTarget'>
@@ -60,19 +47,12 @@
               <b>Directed by {{director.name}}</b>
               <br>
               <b>Starring: </b>
-              {{#each topBilledCast.name}}
-                <!-- {{name}} <button class="deleteCastMember btn btn-danger" data-filmid={{../_id}} data-castid={{_id}}><b>x</b></button> -->
+              {{#each topBilledCast}}
               {{/each}}
-              <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button>
             </p>
-            <!-- <form class="form-inline" id="addCastMemberForm" data-id={{_id}}>
-              <div class="form-group">
-                <input type="text" class="form-control" name="name" placeholder="Film cast member">
-              </div>
-              <button type="submit" class="btn btn-default">Add Cast Member</button>
-            </form> -->
             {{/each}}
           </script>
+
         </div>
       </div>
     </div>

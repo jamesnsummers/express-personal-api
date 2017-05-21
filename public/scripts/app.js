@@ -2,6 +2,8 @@ console.log("Sanity Check: JS is working!");
 var template;
 var $filmList;
 var allFilms = [];
+var projectList;
+var allProjects = [];
 
 $(document).ready(function(){
 
@@ -13,8 +15,17 @@ $(document).ready(function(){
   $.ajax({
     method: 'GET',
     url: '/api/films',
-    success: handleSuccess,
-    error: handleError
+    data: $("form").serialize(),
+    success: filmSuccess,
+    error: filmError
+  });
+
+  $.ajax({
+    method: 'GET',
+    url: '/api/projects',
+    data: $("form").serialize(),
+    success: projectSuccess,
+    error: projectError
   });
 
   function render () {
@@ -23,13 +34,30 @@ $(document).ready(function(){
     $filmList.append(filmsHtml);
   }
 
-  function handleSuccess(json) {
+  function filmSuccess(json) {
     allFilms = json;
-    render();
+    render(allFilms);
+    var directorImage = json.data.director.image;
+    $('p').append(
+      `<div class = "col-md-8">
+      <a href=${directorImage}> <img src = ${directorImage}/></>`
+    )
   }
-  function handleError(e) {
+  function filmError(e) {
     console.log('uh oh');
     $('#filmTarget').text('Failed to load films, is the server working?');
+  }
+
+  function projectSuccess(projects){
+    $('.container').append(
+      `<div class = "col-md-8">
+        <h3>${projects.data}</h3>
+      </div>
+      `
+    )
+  }
+  function projectError(e) {
+    console.log('uh oh');
   }
 
 });
