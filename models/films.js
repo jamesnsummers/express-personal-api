@@ -14,7 +14,8 @@ var FilmsSchema = new Schema({
   },
   genre: String,
   releaseDate: String,
-  topBilledCast: [String]
+  topBilledCast: [String],
+  image: String
 });
 
 var Films = mongoose.model('Films', FilmsSchema);

@@ -3,8 +3,7 @@ var mongoose = require('mongoose'),
 
 var DirectorSchema = new Schema({
   name: String,
-  alive: Boolean,
-  image: String
+  alive: Boolean
 });
 
 var Director = mongoose.model('Director', DirectorSchema);

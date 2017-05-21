@@ -42,18 +42,15 @@ var film_list = [
 var director_list = [
   {
     name: "David Fincher",
-    alive: true,
-    image: "/public/images/David-Fincher.jpg"
+    alive: true
   },
   {
     name: "Destin Daniel Cretton",
-    alive: true,
-    image: "/public/images/Destin-Daniel-Cretton.jpg"
+    alive: true
   },
   {
     name: "Jordan Peele",
-    alive: true,
-    image: "/public/images/Jordan-Peele.jpg"
+    alive: true
   }
 
 ];
@@ -89,7 +86,7 @@ db.Director.remove(function(err, succ){
           image: filmData.image
         });
         db.Director.findOne({name: filmData.director}, function (err, foundDirector) {
-          console.log('found director ' + foundDirector.name + ' for book ' + film.title);
+          console.log('found director ' + foundDirector.name + ' for film ' + film.title);
           if (err) {
             console.log(err);
             return;
@@ -100,6 +97,7 @@ db.Director.remove(function(err, succ){
               return console.log(err);
             }
             console.log('saved ' + savedFilm.title + ' directed by ' + foundDirector.name);
+            return;
           });
         });
       });
