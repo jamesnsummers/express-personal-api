@@ -10,7 +10,7 @@ var film_list = [
     genre: "Thriller",
     releaseDate: "September 22, 1995",
     topBilledCast: ["Brad Pitt", "Morgan Freeman", "Kevin Spacey"],
-    image: "/public/images/seven-poster.jpeg"
+    image: "https://upload.wikimedia.org/wikipedia/en/6/68/Seven_%28movie%29_poster.jpg"
   },
   {
     title: "The Game",
@@ -18,7 +18,7 @@ var film_list = [
     genre: "Thriller",
     releaseDate: "September 12, 1997",
     topBilledCast: ["Michael Douglas", "Sean Penn"],
-    image: "/public/images/the-game-poster.jpeg"
+    image: "/public/images/the-game-poster.jpg"
   },
   {
     title: "Short Term 12",
@@ -26,7 +26,7 @@ var film_list = [
     genre: "Drama",
     releaseDate: "August 23, 2013",
     topBilledCast: ["Brie Larson", "John Gallagher Jr.", "Keith Stanfield"],
-    image: "/public/images/short-term-12-poster.jpeg"
+    image: "/public/images/short-term-12-poster.jpg"
   },
   {
     title: "Get Out",
@@ -34,7 +34,7 @@ var film_list = [
     genre: "Horror",
     releaseDate: "February 24, 2017",
     topBilledCast: ["Daniel Kaluuya", "Allison Williams", "Catherine Keener", "Bradley Whitford"],
-    image: "/public/images/get-out-poster.jpeg"
+    image: "/public/images/get-out-poster.jpg"
   },
 
 ];
@@ -89,7 +89,7 @@ db.Director.remove(function(err, succ){
           console.log('found director ' + foundDirector.name + ' for film ' + film.title);
           if (err) {
             console.log(err);
-            // return;
+            return;
           }
           film.director = foundDirector;
           film.save(function(err, savedFilm){
@@ -99,9 +99,7 @@ db.Director.remove(function(err, succ){
             console.log('saved ' + savedFilm.title + ' directed by ' + foundDirector.name);
           });
         });
-
       });
-      return;
     });
     return console.log(film_list);
   });

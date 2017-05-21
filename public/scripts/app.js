@@ -37,23 +37,23 @@ $(document).ready(function(){
   function filmSuccess(json) {
     allFilms = json;
     render(allFilms);
-    var poster = json[2].image;
-    $('#films-template').prepend(
-      `<a href=${poster}> <img src = ${poster}/></>`
-    )
+    for (var i = 0; i < json.length; i++) {
+        var poster = json[i].image;
+        $('#filmTarget').prepend(`<img src = ${poster} alt="poster"/>`+[i]);
+    }
   }
   function filmError(e) {
     console.log('uh oh');
     $('#filmTarget').text('Failed to load films, is the server working?');
   }
 
-  function projectSuccess(projects){
-    $('.container').append(
-      `<div class = "col-md-8">
-        <h3>${projects[0].title}</h3>
-      </div>
-      `
-    )
+  function projectSuccess(json){
+    for (var i = 0; i < json.length; i++) {
+        var project = json[i].title;
+        var projectDate = json[i].dateCompleted;
+        $('.container').append(`<h4>${project}</h4>`);
+        $('.container').append(`<h5>completed on: ${projectDate}</h5>`);
+    }
   }
   function projectError(e) {
     console.log('uh oh');
