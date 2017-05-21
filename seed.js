@@ -9,28 +9,32 @@ var film_list = [
     director: "David Fincher",
     genre: "Thriller",
     releaseDate: "September 22, 1995",
-    topBilledCast: ["Brad Pitt", "Morgan Freeman", "Kevin Spacey"]
+    topBilledCast: ["Brad Pitt", "Morgan Freeman", "Kevin Spacey"],
+    image: "/public/images/seven-poster.jpeg"
   },
   {
     title: "The Game",
     director: "David Fincher",
     genre: "Thriller",
     releaseDate: "September 12, 1997",
-    topBilledCast: ["Michael Douglas", "Sean Penn"]
+    topBilledCast: ["Michael Douglas", "Sean Penn"],
+    image: "/public/images/seven-poster.jpeg"
   },
   {
     title: "Short Term 12",
     director: "Destin Daniel Cretton",
     genre: "Drama",
     releaseDate: "August 23, 2013",
-    topBilledCast: ["Brie Larson", "John Gallagher Jr.", "Keith Stanfield"]
+    topBilledCast: ["Brie Larson", "John Gallagher Jr.", "Keith Stanfield"],
+    image: "/public/images/seven-poster.jpeg"
   },
   {
     title: "Get Out",
     director: "Jordan Peele",
     genre: "Horror",
     releaseDate: "February 24, 2017",
-    topBilledCast: ["Daniel Kaluuya", "Allison Williams", "Catherine Keener", "Bradley Whitford"]
+    topBilledCast: ["Daniel Kaluuya", "Allison Williams", "Catherine Keener", "Bradley Whitford"],
+    image: "/public/images/seven-poster.jpeg"
   },
 
 ];
@@ -81,7 +85,8 @@ db.Director.remove(function(err, succ){
           title: filmData.title,
           genre: filmData.genre,
           releaseDate: filmData.releaseDate,
-          topBilledCast: filmData.topBilledCast
+          topBilledCast: filmData.topBilledCast,
+          image: filmData.image
         });
         db.Director.findOne({name: filmData.director}, function (err, foundDirector) {
           console.log('found director ' + foundDirector.name + ' for book ' + film.title);

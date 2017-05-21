@@ -37,10 +37,9 @@ $(document).ready(function(){
   function filmSuccess(json) {
     allFilms = json;
     render(allFilms);
-    var directorImage = json.data.director.image;
+    var directorImage = json[0].director.image;
     $('p').append(
-      `<div class = "col-md-8">
-      <a href=${directorImage}> <img src = ${directorImage}/></>`
+      `<a href=${directorImage}> <img src = ${directorImage}/></>`
     )
   }
   function filmError(e) {
@@ -51,7 +50,7 @@ $(document).ready(function(){
   function projectSuccess(projects){
     $('.container').append(
       `<div class = "col-md-8">
-        <h3>${projects.data}</h3>
+        <h3>${projects[0].title}</h3>
       </div>
       `
     )
