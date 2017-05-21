@@ -10,7 +10,7 @@ var film_list = [
     genre: "Thriller",
     releaseDate: "September 22, 1995",
     topBilledCast: ["Brad Pitt", "Morgan Freeman", "Kevin Spacey"],
-    image: "https://upload.wikimedia.org/wikipedia/en/6/68/Seven_%28movie%29_poster.jpg"
+    image: "/public/images/seven-poster.jpeg"
   },
   {
     title: "The Game",

@@ -54,6 +54,13 @@ app.get('/api/projects', function getProjects(req, res){
  });
 });
 
+app.post('/api/films', function (req, res) {
+  // create new book with form data (`req.body`)
+  var newFilm = new db.Film({
+    title: req.body.title
+  });
+});
+
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static('public'));

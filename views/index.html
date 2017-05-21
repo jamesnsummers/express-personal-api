@@ -21,21 +21,11 @@
   <body>
 
   <div class="container">
-    <h1 class="text-center">James N Summers</h1>
-    <h4><a href="/api">Read My API Documentation</a></h4>
+    <h1 class="text-left">James N Summers</h1>
+    <h4 class="apiRef"><a href="/api">My API Documentation</a></h4>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <form class="form-inline" id="newFilmForm">
-          <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" name="title" placeholder="Title">
-          </div>
-          <div class="form-group">
-            <label for="title">Director</label>
-            <input type="text" class="form-control" name="director" placeholder="Director's Name">
-          </div>
-          <button type="submit" class="btn btn-default">Add New Film</button>
-        </form>
+        <h2 id="favFilms">just a few of my favorite films:</h2>
         <div id='filmTarget'>
           <!-- handlebars template -->
           <script id="films-template" type="text/x-handlebars-template">
@@ -54,6 +44,18 @@
           </script>
 
         </div>
+        <h2>ADD A FILM TO THE LIST!</h2>
+        <form class="form-inline" id="newFilmForm">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" name="title" placeholder="Title">
+          </div>
+          <div class="form-group">
+            <label for="title">Director</label>
+            <input type="text" class="form-control" name="director" placeholder="Director's Name">
+          </div>
+          <button type="submit" class="btn btn-default">Add New Film</button>
+        </form>
       </div>
     </div>
   </div>

@@ -1,10 +1,41 @@
 body {
-  color: #333;
+  color: #F2F4FF;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+  background-color: #FFC6BE; /* Sanity Check! */
 }
 
 h1 {
   margin-top: 100px;
+  text-align: center;
+}
+
+h4.apiRef {
+  text-align: left;
+}
+
+.profilePic {
+  border: white solid 2px;
+  border-radius: 50px;
+}
+
+#favFilms {
+  color: #60656B;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 4px solid #8E959E;
+    margin: 1em 0;
+    padding: 0;
+    opacity: .8;
+}
+
+.projectTitle {
+  text-align: center;
+}
+
+.projectDate {
   text-align: center;
 }
