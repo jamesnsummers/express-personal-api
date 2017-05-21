@@ -19,13 +19,13 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-var db = require('./models');
+var db = require('./models/');
 
 /**********
  * ROUTES *
  **********/
 
-app.get('/api/profile', function getProfile(req, res){
+app.get('/api/profile/', function getProfile(req, res){
  var profile = res.json({
    name: "James Summers",
    githuUsername: "jamesnsummers",
@@ -37,7 +37,7 @@ app.get('/api/profile', function getProfile(req, res){
  });
 });
 
-app.get('/api/films', function getFilms(req, res){
+app.get('/api/films/', function getFilms(req, res){
  db.Films.find()
    .populate('director')
    .exec(function(err, films) {
@@ -46,18 +46,21 @@ app.get('/api/films', function getFilms(req, res){
  });
 });
 
-app.post('/api/films', function (req, res) {
-  // create new book with form data (`req.body`)
+app.post('/api/films/', function (req, res) {
   var newFilm = new db.Films({
     title: req.body.title,
-    director: req.body.director
+    director: req.body.director,
+    genre: req.body.genre,
+    releaseDate: req.body.releaseDate,
+    topBilledCast: req.body.topBilledCast,
+    image: req.body.image
   });
 });
 
-app.delete('/api/films/:id', function (req, res) {
+app.delete('/api/films/:id/', function (req, res) {
   console.log('films deleted: ', req.params);
   var filmId = req.params.id;
-  db.Films.findOneAndRemove({ _id: bookId })
+  db.Films.findOneAndRemove({ _id: filmId })
     .populate('director')
     .exec(function (err, deletedFilm) {
       res.json(deletedFilm);
@@ -65,7 +68,7 @@ app.delete('/api/films/:id', function (req, res) {
 });
 
 
-app.get('/api/projects', function getProjects(req, res){
+app.get('/api/projects/', function getProjects(req, res){
  db.Projects.find()
    .exec(function(err, projects) {
      if (err) { return console.log("index error: " + err); }
@@ -90,7 +93,7 @@ app.get('/', function homepage(req, res) {
  * JSON API Endpoints list
  */
 
-app.get('/api', function apiIndex(req, res) {
+app.get('/api/', function apiIndex(req, res) {
   res.json({
     message: "Welcome to my personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/jamesnsummers/express-personal-api/README.md",

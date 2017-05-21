@@ -38,7 +38,7 @@ $(document).ready(function(){
 
   $('#newFilmForm').on('submit', function(e) {
     e.preventDefault();
-    console.log('new film serialized', $(this).serializeArray());
+    // console.log('new film serialized', $(this).serializeArray());
     $.ajax({
       method: 'POST',
       url: '/api/films/',
@@ -64,18 +64,9 @@ $(document).ready(function(){
     $filmList.append(filmsHtml);
   }
 
-  function profileSuccess(json){
-    var profile = json.githubProfileImage;
-    $('h1').prepend(`<img class = "profilePic" src = ${profile} height = 150/><br>`);
-  }
-
-  function profileError(e) {
-    console.log('uh oh');
-  }
-
   function filmSuccess(json) {
     allFilms = json;
-    render(allFilms);
+    render();
   }
 
   function filmError(e) {
@@ -96,11 +87,11 @@ $(document).ready(function(){
   function deleteFilmSuccess(json) {
   var film = json;
   console.log(json);
-  var filmId = films._id;
-  console.log('delete book', bookId);
+  var filmId = film._id;
+  console.log('delete book', filmId);
   // find the book with the correct ID and remove it from our allBooks array
   for(var index = 0; index < allFilms.length; index++) {
-    if(allFilms[index]._id === bookId) {
+    if(allFilms[index]._id === filmId) {
       allFilms.splice(index, 1);
       break;  // we found our book - no reason to keep searching (this is why we didn't use forEach)
     }
@@ -122,6 +113,15 @@ function deleteFilmError() {
   }
 
   function projectError(e) {
+    console.log('uh oh');
+  }
+
+  function profileSuccess(json){
+    var profile = json.githubProfileImage;
+    $('h1').prepend(`<img class = "profilePic" src = ${profile} height = 150/><br>`);
+  }
+
+  function profileError(e) {
     console.log('uh oh');
   }
 
