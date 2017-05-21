@@ -18,7 +18,7 @@ var film_list = [
     genre: "Thriller",
     releaseDate: "September 12, 1997",
     topBilledCast: ["Michael Douglas", "Sean Penn"],
-    image: "/public/images/seven-poster.jpeg"
+    image: "/public/images/the-game-poster.jpeg"
   },
   {
     title: "Short Term 12",
@@ -26,7 +26,7 @@ var film_list = [
     genre: "Drama",
     releaseDate: "August 23, 2013",
     topBilledCast: ["Brie Larson", "John Gallagher Jr.", "Keith Stanfield"],
-    image: "/public/images/seven-poster.jpeg"
+    image: "/public/images/short-term-12-poster.jpeg"
   },
   {
     title: "Get Out",
@@ -34,7 +34,7 @@ var film_list = [
     genre: "Horror",
     releaseDate: "February 24, 2017",
     topBilledCast: ["Daniel Kaluuya", "Allison Williams", "Catherine Keener", "Bradley Whitford"],
-    image: "/public/images/seven-poster.jpeg"
+    image: "/public/images/get-out-poster.jpeg"
   },
 
 ];
