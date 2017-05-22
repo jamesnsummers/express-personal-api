@@ -22,7 +22,7 @@ $(document).ready(function(){
 
   $.ajax({
     method: 'GET',
-    url: '/api/films/',
+    url: '/api/films',
     data: $("form").serialize(),
     success: filmSuccess,
     error: filmError
@@ -30,7 +30,7 @@ $(document).ready(function(){
 
   $.ajax({
     method: 'GET',
-    url: '/api/projects/',
+    url: '/api/projects',
     data: $("form").serialize(),
     success: projectSuccess,
     error: projectError
@@ -38,10 +38,10 @@ $(document).ready(function(){
 
   $('#newFilmForm').on('submit', function(e) {
     e.preventDefault();
-    // console.log('new film serialized', $(this).serializeArray());
+    console.log('new film serialized', $(this).serializeArray());
     $.ajax({
       method: 'POST',
-      url: '/api/films/',
+      url: '/api/films',
       data: $(this).serializeArray(),
       success: newFilmSuccess,
       error: newFilmError
@@ -88,12 +88,11 @@ $(document).ready(function(){
   var film = json;
   console.log(json);
   var filmId = film._id;
-  console.log('delete book', filmId);
-  // find the book with the correct ID and remove it from our allBooks array
+  console.log('delete film', filmId);
   for(var index = 0; index < allFilms.length; index++) {
     if(allFilms[index]._id === filmId) {
       allFilms.splice(index, 1);
-      break;  // we found our book - no reason to keep searching (this is why we didn't use forEach)
+      break;
     }
   }
   render();
