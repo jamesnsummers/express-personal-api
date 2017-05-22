@@ -59,12 +59,22 @@ var project_list = [
   {
     title: "Tic Tac Toe",
     dateCompleted: "May 7, 2017",
-    url: "http://jim-jac-joe.bitballoon.com/"
+    url: "https://github.com/jamesnsummers/tic-tac-toe.git"
   },
   {
     title: "Ajaxify Reddit",
     dateCompleted: "May 12, 2017",
     url: "https://github.com/jamesnsummers/ajaxify-reddit.git"
+  },
+  {
+    title: "Geoquakes",
+    dateCompleted: "May 14, 2017",
+    url: "https://github.com/jamesnsummers/geoquakes.git"
+  },
+  {
+    title: "Choose Your Own Adventure",
+    dateCompleted: "May 8, 2017",
+    url: "https://github.com/jamesnsummers/js_adventure.git"
   }
 
 ];
@@ -103,7 +113,6 @@ db.Director.remove(function(err, succ){
     });
     return console.log(film_list);
   });
-
 });
 
 db.Projects.remove(function(err, succ){

@@ -85,38 +85,34 @@ $(document).ready(function(){
   }
 
   function deleteFilmSuccess(json) {
-  var film = json;
-  console.log(json);
-  var filmId = film._id;
-  console.log('delete film', filmId);
-  for(var index = 0; index < allFilms.length; index++) {
-    if(allFilms[index]._id === filmId) {
-      allFilms.splice(index, 1);
-      break;
+    var film = json;
+      console.log(json);
+    var filmId = film._id;
+      console.log('delete film', filmId);
+    for(var index = 0; index < allFilms.length; index++) {
+      if(allFilms[index]._id === filmId) {
+        allFilms.splice(index, 1);
+        break;
+      }
     }
+    render();
   }
-  render();
-}
 
-function deleteFilmError() {
-  console.log('deletefilm error!');
-}
+  function deleteFilmError() {
+    console.log('deletefilm error!');
+  }
 
   function projectSuccess(json){
-    $('.row1').append(`<br><br><br><br><br><br><h2>Projects I've worked on</h2>`)
+    $('h1').append(`<br><h2>Projects</h2>`)
     for (var i = 0; i < json.length; i++) {
-        var project = json[i].title;
-        var projectDate = json[i].dateCompleted;
-        var projectUrl = json[i].url;
-        $('.row1').append
-        (`<div class="row2">
-            <div class="col-md-2 col-md">
-              <h4 class="projectTitle"><a href=${projectUrl}>${project}</h4>
-              <h5 class="projectDate">completed on: ${projectDate}</h5>
-
-            </div>
-          </div>`);
-        // $('.container').append(`<h5 class="projectDate">completed on: ${projectDate}</h5>`);
+      var project = json[i].title;
+      var projectUrl = json[i].url;
+      var projectDate = json[i].dateCompleted;
+      $('h1').append
+      (`<div class="col-md-3 col-md">
+          <h4><a href=${projectUrl}>${project}</a></h4>
+          <h5>completed on: ${projectDate}</h5>
+        </div>`);
     }
   }
 

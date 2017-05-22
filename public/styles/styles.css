@@ -1,7 +1,11 @@
 body {
-  color: #F2F4FF;
-  font-family: Helvetica, Arial, sans-serif;
-  background-color: #FFC6BE;
+  background-color: #FFAD95
+}
+
+.container {
+  color: #FF7F59;
+  font-family: 'Istok Web', sans-serif;
+  background-color: #FFDED0;
 }
 
 h1 {
@@ -10,54 +14,39 @@ h1 {
   text-align: center;
 }
 
-.col-md-2, .col-md-8{
-  border: 1px solid #8E959E;
+h2 {
+  padding-left: 6px;
+}
+
+.col-md-3{
+  border: 1px dashed #8E959E;
   border-radius: 20px;
-  margin: 10px;
-}
-
-#favFilms {
-  color: #60656B;
-  text-align: left;
-}
-
-.apiRef {
-  text-align: left;
+  margin-bottom: 5px;
 }
 
 .profilePic {
-  border: white solid 2px;
-  border-radius: 20px;
+  border: white double 9px;
+  border-radius: 80px;
   margin-top: 4px;
-}
-
-#addFilm {
-  text-align: center;
-  text-decoration: underline;
 }
 
 hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #8E959E;
+    border-top: 1px dashed #8E959E;
     margin: 1em 0;
+    margin-right: 69%;
     padding: 0;
     opacity: .8;
 }
 
-.deleteBtn.btn.btn-danger.pull-right {
-  margin-bottom: 10px;
+.deleteBtn {
+  margin-top: 10px;
+  font-family: 'News Cycle', sans-serif;
 }
 
-.projectTitle {
-  text-align: left;
-}
-
-.projectDate {
-  text-align: left;
-}
-
-.btn-default {
+.btn {
   margin-left: 4px;
+  font-family: 'News Cycle', sans-serif;
 }
