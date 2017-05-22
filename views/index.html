@@ -21,10 +21,12 @@
   <body>
 
   <div class="container">
-    <h1 class="text-left">James N Summers</h1>
-    <h4 class="apiRef"><a href="/api">My API Documentation</a></h4>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
+
+
+    <div class="row1">
+      <div class="col-md-8 col-md">
+        <h1 class="text-left">James N Summers</h1>
+        <h4 class="apiRef"><a href="/api">My API Documentation</a></h4>
         <h2 id="favFilms">Just a few of my favorite films:</h2>
         <div id='filmTarget'>
           <!-- handlebars template -->
@@ -39,27 +41,28 @@
               <b>Starring: </b>
               {{#each topBilledCast}}
               {{/each}}
-              <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button>
+              <button type="button" name="button" class="deleteBtn btn pull-right" data-id={{_id}}>Remove Film</button>
             </p>
             {{/each}}
             <hr>
           </script>
-
         </div>
         <h2 id="addFilm">ADD A FILM</h2>
         <form class="form-inline" id="newFilmForm">
           <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title"></label>
             <input type="text" class="form-control" name="title" placeholder="Title">
           </div>
           <div class="form-group">
-            <label for="title">Director</label>
+            <label for="title"></label>
             <input type="text" class="form-control" name="director" placeholder="Director's Name">
           </div>
           <button type="submit" class="btn btn-default">Add New Film</button>
-        </form>
+        </form><br>
       </div>
     </div>
+  
   </div>
+
 </body>
 </html>

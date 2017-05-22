@@ -103,10 +103,19 @@ function deleteFilmError() {
 }
 
   function projectSuccess(json){
+    $('.row1').append(`<br><br><br><br><br><br><h2>Projects I've worked on</h2>`)
     for (var i = 0; i < json.length; i++) {
         var project = json[i].title;
         var projectDate = json[i].dateCompleted;
-        $('.container').append(`<h4 class="projectTitle">${project}</h4><h5 class="projectDate">completed on: ${projectDate}</h5>`);
+        var projectUrl = json[i].url;
+        $('.row1').append
+        (`<div class="row2">
+            <div class="col-md-2 col-md">
+              <h4 class="projectTitle"><a href=${projectUrl}>${project}</h4>
+              <h5 class="projectDate">completed on: ${projectDate}</h5>
+
+            </div>
+          </div>`);
         // $('.container').append(`<h5 class="projectDate">completed on: ${projectDate}</h5>`);
     }
   }

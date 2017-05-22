@@ -62,9 +62,9 @@ var project_list = [
     url: "http://jim-jac-joe.bitballoon.com/"
   },
   {
-    title: "Books App",
+    title: "Ajaxify Reddit",
     dateCompleted: "May 12, 2017",
-    url: ""
+    url: "https://github.com/jamesnsummers/ajaxify-reddit.git"
   }
 
 ];

@@ -1,12 +1,19 @@
 body {
   color: #F2F4FF;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: #FFC6BE; /* Sanity Check! */
+  background-color: #FFC6BE;
 }
 
 h1 {
-  margin-top: 100px;
+  margin-top: 10px;
+  padding-top: 0;
   text-align: center;
+}
+
+.col-md-2, .col-md-8{
+  border: 1px solid #8E959E;
+  border-radius: 20px;
+  margin: 10px;
 }
 
 #favFilms {
@@ -14,13 +21,14 @@ h1 {
   text-align: left;
 }
 
-h4.apiRef {
+.apiRef {
   text-align: left;
 }
 
 .profilePic {
   border: white solid 2px;
-  border-radius: 50px;
+  border-radius: 20px;
+  margin-top: 4px;
 }
 
 #addFilm {
@@ -32,16 +40,24 @@ hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 4px solid #8E959E;
+    border-top: 1px solid #8E959E;
     margin: 1em 0;
     padding: 0;
     opacity: .8;
 }
 
+.deleteBtn.btn.btn-danger.pull-right {
+  margin-bottom: 10px;
+}
+
 .projectTitle {
-  text-align: center;
+  text-align: left;
 }
 
 .projectDate {
-  text-align: center;
+  text-align: left;
+}
+
+.btn-default {
+  margin-left: 4px;
 }
