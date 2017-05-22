@@ -127,9 +127,7 @@ app.get('/api/', function apiIndex(req, res) {
       {method: "GET", path: "/api/films", description: "Films I've seen and loved"},
       {method: "POST", path: "/api/films", description: "Add new film I've seen"},
       {method: "DELETE", path: "/api/films/:id", description: "Delete a film from the list"},
-      {method: "GET", path: "/api/projects", description: "Projects I've made"},
-      {method: "POST", path: "/api/projects", description: "Add a new project"},
-      {method: "DELETE", path: "/api/projects/:id", description: "Delete a project from the list"}
+      {method: "GET", path: "/api/projects", description: "Projects I've made"}
     ]
   })
 });
