@@ -27,10 +27,10 @@ var db = require('./models');
 
 app.get('/api/profile', function getProfile(req, res){
  var profile = res.json({
-   name: "James Summers",
+   name: "James N. Summers",
    githuUsername: "jamesnsummers",
    githubLink: "https://github.com/jamesnsummers",
-   githubProfileImage: "https://avatars0.githubusercontent.com/u/23504992?v=3&u=23e80422beb2b0e79dc025bb26b80e52fabc2ebe&s=400",
+   githubProfileImage: "https://avatars0.githubusercontent.com/u/23504992?v=3&s=460",
    personalSiteLink: "http://jamesnsummers.com/",
    currentCity: "Austin, TX",
    pets: ["Sedona", "Duke", "Oreo"]
