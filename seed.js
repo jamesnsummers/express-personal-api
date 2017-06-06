@@ -75,6 +75,11 @@ var project_list = [
     title: "Choose Your Own Adventure",
     dateCompleted: "May 8, 2017",
     url: "https://github.com/jamesnsummers/js_adventure.git"
+  },
+  {
+    title: "TacOMG",
+    dateCompleted: "June 2, 2017",
+    url: "http://tacomg.herokuapp.com/"
   }
 
 ];
