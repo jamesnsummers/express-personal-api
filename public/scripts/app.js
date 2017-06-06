@@ -112,7 +112,7 @@ $(document).ready(function(){
       (`<div class="col-md-3 col-md">
           <h4><a href=${projectUrl}>${project}</a></h4>
           <h5>completed on: ${projectDate}</h5>
-        </div>`);
+        </div><br><br>`);
     }
   }
 

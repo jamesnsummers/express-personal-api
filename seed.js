@@ -79,9 +79,8 @@ var project_list = [
   {
     title: "TacOMG",
     dateCompleted: "June 2, 2017",
-    url: "http://tacomg.herokuapp.com/"
+    url: "http://tacomg.herokuapp.com"
   }
-
 ];
 
 db.Director.remove(function(err, succ){
