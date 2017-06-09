@@ -55,13 +55,13 @@ app.get('/templates/:name', function templates(req, res) {
 
 app.get('/api', controllers.api.index);
 
-app.get('/api/profile', controllers.profile.index);
+// app.get('/api/profile', controllers.profile.index);
 
-app.get('/api/films', controllers.films.index);
-app.get('/api/films/:filmId', controllers.films.show);
-app.post('/api/films', controllers.films.create);
-app.delete('/api/films/:filmId', controllers.films.destroy);
-app.put('/api/films/:filmId', controllers.films.update);
+app.get('/api/films', controllers.film.index);
+app.get('/api/films/:filmId', controllers.film.show);
+app.post('/api/films', controllers.film.create);
+app.delete('/api/films/:filmId', controllers.film.destroy);
+app.put('/api/films/:filmId', controllers.film.update);
 
 // ALL OTHER ROUTES (ANGULAR HANDLES)
 // redirect all other paths to index
