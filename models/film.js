@@ -6,7 +6,7 @@ var CastSchema = new Schema({
   name: String
 });
 
-var FilmsSchema = new Schema({
+var FilmSchema = new Schema({
   title: String,
   director: {
     type: Schema.Types.ObjectId,
@@ -18,6 +18,6 @@ var FilmsSchema = new Schema({
   image: String
 });
 
-var Films = mongoose.model('Films', FilmsSchema);
+var Film = mongoose.model('Film', FilmSchema);
 
-module.exports = Films;
+module.exports = Film;

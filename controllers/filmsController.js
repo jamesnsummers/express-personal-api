@@ -5,14 +5,14 @@
 var db = require('../models');
 
 
-
-// GET /api/albums
+// GET
 function index(req, res) {
   db.Film.find({}, function(err, allFilms) {
     res.json(allFilms);
   });
 }
 
+// POST
 function create(req, res) {
   console.log('body', req.body);
   db.Album.create(req.body, function(err, film) {
@@ -22,6 +22,7 @@ function create(req, res) {
   });
 }
 
+// GET
 function show(req, res) {
   db.Film.findById(req.params.albumId, function(err, foundFilm) {
     if(err) { console.log('filmsController.show error', err); }
@@ -30,13 +31,15 @@ function show(req, res) {
   });
 }
 
+// DELETE
 function destroy(req, res) {
-  db.Album.findOneAndRemove({ _id: req.params.filmId }, function(err, foundFilm){
+  db.Film.findOneAndRemove({ _id: req.params.filmId }, function(err, foundFilm){
     // note you could send just send 204, but we're sending 200 and the deleted entity
     res.json(foundFilm);
   });
 }
 
+// UPDATE
 function update(req, res) {
   console.log('updating with data', req.body);
   db.Album.findById(req.params.filmId, function(err, foundFilm) {

@@ -1,11 +1,20 @@
-// require express and other modules
-var express = require('express'),
-    app = express();
+// SERVER-SIDE JAVASCRIPT
 
-// parse incoming urlencoded form data
-// and populate the req.body object
+//require express in our app
+var express = require('express');
+// generate a new express app and call it 'app'
+var app = express();
 var bodyParser = require('body-parser');
+
+// serve static files from public folder
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
+// need to add this so that we can accept request payloads
+app.use(bodyParser.json());
+
+// We'll serve jQuery and bootstrap from a local bower cache avoiding CDNs
+// We're placing these under /vendor to differentiate them from our own assets
+app.use('/vendor', express.static(__dirname + '/bower_components'));
 
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
@@ -14,6 +23,8 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+var controllers = require('./controllers');
 
 /************
  * DATABASE *
@@ -24,6 +35,39 @@ var db = require('./models');
 /**********
  * ROUTES *
  **********/
+
+ /*
+ * HTML Endpoints
+ */
+
+app.get('/', function homepage (req, res) {
+  res.sendFile(__dirname + '/views/index.html');
+});
+
+app.get('/templates/:name', function templates(req, res) {
+  var name = req.params.name;
+  res.sendFile(__dirname + '/views/templates/' + name + '.html');
+});
+
+/*
+ * JSON API Endpoints
+ */
+
+app.get('/api', controllers.api.index);
+
+app.get('/api/profile', controllers.profile.index);
+
+app.get('/api/films', controllers.films.index);
+app.get('/api/films/:filmId', controllers.films.show);
+app.post('/api/films', controllers.films.create);
+app.delete('/api/films/:filmId', controllers.films.destroy);
+app.put('/api/films/:filmId', controllers.films.update);
+
+// ALL OTHER ROUTES (ANGULAR HANDLES)
+// redirect all other paths to index
+app.get('*', function homepage (req, res) {
+  res.sendFile(__dirname + '/views/index.html');
+});
 
 app.get('/api/profile', function getProfile(req, res){
  var profile = res.json({
@@ -37,58 +81,49 @@ app.get('/api/profile', function getProfile(req, res){
  });
 });
 
-app.get('/api/films', function getFilms(req, res){
- db.Films.find()
-   .populate('director')
-   .exec(function(err, films) {
-     if (err) { return console.log("index error: " + err); }
-     res.json(films);
- });
-});
+// app.post('/api/films', function (req, res) {
+//   var newFilm = new db.Films({
+//     title: req.body.title,
+//     genre: req.body.genre,
+//     releaseDate: req.body.releaseDate,
+//     topBilledCast: req.body.topBilledCast,
+//     image: req.body.image
+//   });
+//
+//   db.Director.findOne({name: req.body.director}, function(err, director){
+//     if (err) {
+//       return console.log(err);
+//     }
+//     if (director === null) {
+//       db.Director.create({name:req.body.director, alive:true}, function(err, newDirector) {
+//         createFilmWithDirector(newFilm, newDirector, res);
+//       });
+//     } else {
+//       createFilmWithDirector(newFilm, director, res);
+//     }
+//   });
+// });
 
-app.post('/api/films', function (req, res) {
-  var newFilm = new db.Films({
-    title: req.body.title,
-    genre: req.body.genre,
-    releaseDate: req.body.releaseDate,
-    topBilledCast: req.body.topBilledCast,
-    image: req.body.image
-  });
+// function createFilmWithDirector(film, director, res) {
+//   film.director = director;
+//   film.save(function(err, book){
+//     if (err) {
+//       return console.log("save error: " + err);
+//     }
+//     console.log("saved ", film.title);
+//     res.json(film);
+//   });
+// }
 
-  db.Director.findOne({name: req.body.director}, function(err, director){
-    if (err) {
-      return console.log(err);
-    }
-    if (director === null) {
-      db.Director.create({name:req.body.director, alive:true}, function(err, newDirector) {
-        createFilmWithDirector(newFilm, newDirector, res);
-      });
-    } else {
-      createFilmWithDirector(newFilm, director, res);
-    }
-  });
-});
-
-function createFilmWithDirector(film, director, res) {
-  film.director = director;
-  film.save(function(err, book){
-    if (err) {
-      return console.log("save error: " + err);
-    }
-    console.log("saved ", film.title);
-    res.json(film);
-  });
-}
-
-app.delete('/api/films/:id', function (req, res) {
-  // console.log('films deleted: ', req.params);
-  var filmId = req.params.id;
-  db.Films.findOneAndRemove({ _id: filmId })
-    .populate('director')
-    .exec(function (err, deletedFilm) {
-      res.json(deletedFilm);
-  });
-});
+// app.delete('/api/films/:id', function (req, res) {
+//   // console.log('films deleted: ', req.params);
+//   var filmId = req.params.id;
+//   db.Films.findOneAndRemove({ _id: filmId })
+//     .populate('director')
+//     .exec(function (err, deletedFilm) {
+//       res.json(deletedFilm);
+//   });
+// });
 
 
 app.get('/api/projects', function getProjects(req, res){
@@ -98,19 +133,6 @@ app.get('/api/projects', function getProjects(req, res){
      res.json(projects);
  });
 });
-
-// Serve static files from the `/public` directory:
-// i.e. `/images`, `/scripts`, `/styles`
-app.use(express.static('public'));
-
-/*
- * HTML Endpoints
- */
-
-app.get('/', function homepage(req, res) {
-  res.sendFile(__dirname + '/views/index.html');
-});
-
 
 /*
  * JSON API Endpoints list
